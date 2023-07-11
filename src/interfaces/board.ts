@@ -1,3 +1,7 @@
+export interface BoardId {
+    id: number;
+}
+
 export interface Board {
     title: string;
     content: string;
@@ -5,18 +9,11 @@ export interface Board {
     noticeYn: boolean;
 }
 
-export interface GetBoard extends Board {
-    id: number;
+export interface GetBoard extends Board, BoardId {
     viewCnt: number;
     deleteYn: boolean;
     createdDate: string;
     modifiedDate: null | string;
 }
 
-export interface UpdataBoard extends Board {
-    id: number;
-}
-
-export interface DeleteBoard {
-    id: number;
-}
+export interface UpdataBoard extends Board, BoardId {}
