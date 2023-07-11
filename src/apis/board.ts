@@ -1,7 +1,7 @@
 import axios from './axios';
-import { handleApiError, handleConnectionError } from './handleError';
+import { handleApiError } from './handleError';
 import { Board, DeleteBoard, GetBoard, UpdataBoard } from 'interfaces/board';
-import { AxiosResult } from 'enums/axiosResult';
+import { inspection } from './axiosInspection';
 
 const createBoard = async (data: Board): Promise<void> => {
     try {
@@ -14,19 +14,7 @@ const createBoard = async (data: Board): Promise<void> => {
 const getBoard = async (success: (data: GetBoard[]) => void): Promise<void> => {
     try {
         const res = await axios.get('/board');
-        switch (res.data.result) {
-            case AxiosResult.SUCCESS:
-                success(res.data);
-                break;
-            case AxiosResult.ERROR:
-                handleConnectionError(res.data);
-                break;
-            case AxiosResult.FAIL:
-                alert('알 수 없는 에러로 게시글을 가져오지 못했습니다.');
-                break;
-            default:
-                break;
-        }
+        inspection(res.data) && success(res.data);
     } catch (error) {
         handleApiError(error);
     }
