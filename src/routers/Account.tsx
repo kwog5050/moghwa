@@ -1,16 +1,16 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import Account from './Account';
+import Signup from 'pages/account/Signup';
 
-function App() {
+const Account = () => {
     return (
         <>
             <Routes>
-                <Route path="/*" element={<Account />} />
+                <Route path="/signup" element={<Signup />} />
             </Routes>
         </>
     );
-}
+};
 
-export default App;
+export default Account;
