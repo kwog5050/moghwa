@@ -3,6 +3,7 @@ import { axiosInspection } from './axiosInspection';
 import { handleApiError } from './handleError';
 import { BoardId, Board, GetBoard, UpdataBoard } from 'interfaces/board';
 
+// 게시글 작성
 const createBoard = async (data: Board): Promise<void> => {
     try {
         const res = await axios.post('/board', data);
@@ -12,6 +13,7 @@ const createBoard = async (data: Board): Promise<void> => {
     }
 };
 
+// 게시글 가져오기
 const getBoard = async (success: (data: GetBoard[]) => void): Promise<void> => {
     try {
         const res = await axios.get('/board');
@@ -21,6 +23,7 @@ const getBoard = async (success: (data: GetBoard[]) => void): Promise<void> => {
     }
 };
 
+// 게시글 수정
 const updataBoard = async (data: UpdataBoard): Promise<void> => {
     try {
         const res = await axios.patch('/board', data);
@@ -30,6 +33,7 @@ const updataBoard = async (data: UpdataBoard): Promise<void> => {
     }
 };
 
+// 게시글 삭제
 const deleteBoard = async (data: BoardId): Promise<void> => {
     try {
         const res = await axios.delete(`/board/${data.id}`);
