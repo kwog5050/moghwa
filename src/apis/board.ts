@@ -14,7 +14,7 @@ const createBoard = async (data: Board): Promise<void> => {
 const getBoard = async (success: (data: GetBoard[]) => void): Promise<void> => {
     try {
         const res = await axios.get('/board');
-        inspection(res.data) && success(res.data);
+        inspection(res.data, '알 수 없는 에러로 게시글 가져오기에 실패했습니다.') && success(res.data);
     } catch (error) {
         handleApiError(error);
     }
