@@ -23,18 +23,17 @@ const handleApiError = (error: any): void => {
 };
 
 // 통신 성공했는데 에러 터짐
-const handleConnectionError = (res: any) => {
+const handleConnectionError = (res: any): boolean => {
     // 에러 코드 없이 에러나면
     if (/.*error*./.test(res)) {
         errorMessage(`FATAL ERROR!!! 관리자에게 문의해주세요` + res, true);
         return false;
     }
-
     return true;
 };
 
 // 에러 메세지
-const errorMessage = (msg: string, isErrorPage: any) => {
+const errorMessage = (msg: string, isErrorPage: any): void => {
     alert(msg);
     if (isErrorPage) {
         window.location.replace('/error');
