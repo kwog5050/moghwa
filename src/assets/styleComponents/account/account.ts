@@ -28,8 +28,8 @@ export const AccountForm = styled.form`
             margin-bottom: 20px;
         }
         input {
-            border: 1px solid #aaa;
             padding: 10px 5px;
+            border: 1px solid #aaa;
             border-radius: 5px;
         }
         .buttons {

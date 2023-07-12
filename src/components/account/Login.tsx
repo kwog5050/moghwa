@@ -12,7 +12,9 @@ const Login = () => {
     const [pw, setPw] = useState('');
     const dispatch = useAppDispatch();
 
-    const handleLogin = (): void => {
+    const handleLogin = (e: any): void => {
+        e.preventDefault();
+
         login({
             userId: id,
             userPw: pw,
@@ -33,12 +35,13 @@ const Login = () => {
                 break;
         }
     };
+
     return (
         <AccountForm>
             <div className="form">
                 <h2>로그인</h2>
                 <input type="text" name="id" onChange={onChange} value={id} placeholder="아이디" />
-                <input type="text" name="pw" onChange={onChange} value={pw} placeholder="비밀번호" />
+                <input type="password" name="pw" onChange={onChange} value={pw} placeholder="비밀번호" />
                 <div className="buttons">
                     <button onClick={handleLogin}>로그인</button>
                     <div>

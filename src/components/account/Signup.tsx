@@ -3,7 +3,9 @@ import React, { useState } from 'react';
 import { useAppDispatch } from 'redux/hook';
 import { Login, offAccount } from 'redux/slice/accountSlice';
 
-import { login, signup } from 'apis/account';
+import { signup } from 'apis/account';
+
+import { formatPhoneNumber } from 'utils/formatPhoneNumber';
 
 import { AccountForm } from 'assets/styleComponents/account/account';
 
@@ -14,14 +16,16 @@ const Signup = () => {
     const [tel, setTel] = useState('');
     const [email, setEamil] = useState('');
 
-    const handleSignup = (): void => {
-        const phoneRegex = /^01([0|1|6|7|8|9])(\d{3}|\d{4})(\d{4})$/;
+    const handleSignup = (e: any): void => {
+        e.preventDefault();
+
+        const phoneRegex = /^\d{2,3}-\d{3,4}-\d{4}$/;
         const emailRegex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
-        if (id.length > 2) {
+        if (id.length < 2) {
             alert('아이디 두자리 이상 해주세요.');
             return;
-        } else if (pw.length > 6) {
+        } else if (pw.length < 6) {
             alert('비밀번호 6자리 이상해주세요.');
         } else if (!phoneRegex.test(tel)) {
             alert('전화번호 형식이 아닙니다.');
@@ -50,7 +54,7 @@ const Signup = () => {
                 setPw(value);
                 break;
             case 'tel':
-                setTel(value);
+                setTel(formatPhoneNumber(value));
                 break;
             case 'email':
                 setEamil(value);
@@ -59,13 +63,14 @@ const Signup = () => {
                 break;
         }
     };
+
     return (
         <AccountForm>
             <div className="form">
                 <h2>회원가입</h2>
                 <input type="text" name="id" onChange={onChange} value={id} placeholder="아이디" />
-                <input type="text" name="pw" onChange={onChange} value={pw} placeholder="비밀번호" />
-                <input type="text" name="tel" onChange={onChange} value={tel} placeholder="전화번호" />
+                <input type="password" name="pw" onChange={onChange} value={pw} placeholder="비밀번호" />
+                <input type="text" name="tel" onChange={onChange} value={tel} placeholder="전화번호" maxLength={13} />
                 <input type="text" name="email" onChange={onChange} value={email} placeholder="이메일" />
                 <div className="buttons">
                     <button onClick={handleSignup}>가입하기</button>

@@ -19,7 +19,7 @@ const handleApiError = (error: any): void => {
         console.log('Error', error.message);
     }
     console.log(error.config);
-    window.location.replace('/error');
+    // window.location.replace('/error');
 };
 
 // 통신 성공했는데 에러 터짐
@@ -36,7 +36,7 @@ const handleConnectionError = (res: any): boolean => {
 const errorMessage = (msg: string, isErrorPage: any): void => {
     alert(msg);
     if (isErrorPage) {
-        window.location.replace('/error');
+        // window.location.replace('/error');
     }
 };
 
