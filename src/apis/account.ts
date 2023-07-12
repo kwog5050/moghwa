@@ -16,8 +16,14 @@ const signup = async (data: Signup): Promise<void> => {
 // 로그인
 const login = async (data: Login): Promise<void> => {
     try {
-        const res = await axios.post('/login', data);
-        axiosInspection(res.data) && window.location.replace('/');
+        const res = await axios.post('/user/login', data);
+        if (axiosInspection(res.data)) {
+            console.log(res.data);
+
+            sessionStorage.setItem('userId', res.data.data.userId);
+            sessionStorage.setItem('userToken', res.data.data.token);
+            // window.location.replace('/');
+        }
     } catch (error) {
         handleApiError(error);
     }
