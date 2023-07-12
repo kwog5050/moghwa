@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
 
@@ -8,6 +8,15 @@ import { onAccount } from 'redux/slice/accountSlice';
 
 const Header = () => {
     const dispatch = useAppDispatch();
+    const [id, setId] = useState(sessionStorage.getItem('userId'));
+
+    const logout = () => {
+        sessionStorage.removeItem('userId');
+        sessionStorage.removeItem('userToken');
+        setId(null);
+    };
+
+    useEffect(() => {}, [id]);
 
     return (
         <Head>
@@ -18,17 +27,21 @@ const Header = () => {
                     <nav>
                         <ul>
                             <li>
-                                <Link to={'?'}>공지사항</Link>
+                                <Link to={'/notice'}>공지사항</Link>
                             </li>
                             <li>
-                                <Link to={'?'}>문의사항</Link>
+                                <Link to={'/contact'}>문의사항</Link>
                             </li>
-                            <li
-                                onClick={() => {
-                                    dispatch(onAccount());
-                                }}>
-                                로그인
-                            </li>
+                            {id !== null ? (
+                                <li onClick={logout}>로그아웃</li>
+                            ) : (
+                                <li
+                                    onClick={() => {
+                                        dispatch(onAccount());
+                                    }}>
+                                    로그인
+                                </li>
+                            )}
                         </ul>
                     </nav>
                 </div>
