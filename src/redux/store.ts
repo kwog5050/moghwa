@@ -1,7 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
+import account from './slice/accountSlice';
 
 const store = configureStore({
-    reducer: {},
+    reducer: { account },
 });
 
 export type AppDispatch = typeof store.dispatch;
