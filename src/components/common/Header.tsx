@@ -6,6 +6,8 @@ import { useAppDispatch } from 'redux/hook';
 
 import { onAccount } from 'redux/slice/accountSlice';
 
+import logo from 'assets/images/logo.png';
+
 const Header = () => {
     const dispatch = useAppDispatch();
     const [id, setId] = useState(sessionStorage.getItem('userId'));
@@ -22,15 +24,17 @@ const Header = () => {
         <Head>
             <div className="wrap">
                 <div className="flexBox">
-                    <div></div>
-                    <h1>로고자리</h1>
+                    <div className="pc"></div>
+                    <h1>
+                        <img src={logo} alt="" />
+                    </h1>
                     <nav>
                         <ul>
                             <li>
-                                <Link to={'/notice'}>공지사항</Link>
+                                <Link to={'/notice/1'}>공지사항</Link>
                             </li>
                             <li>
-                                <Link to={'/contact'}>문의사항</Link>
+                                <Link to={'/contact/1'}>문의사항</Link>
                             </li>
                             {id !== null ? (
                                 <li onClick={logout}>로그아웃</li>
@@ -68,7 +72,34 @@ const Head = styled.header`
             li {
                 padding: 0px 15px;
                 cursor: pointer;
+                position: relative;
+                &:hover {
+                    color: #bae148;
+                    &::after {
+                        content: '';
+                        width: 8px;
+                        height: 8px;
+                        background-color: #bae148;
+                        position: absolute;
+                        top: -5px;
+                        left: 5px;
+                        border-radius: 50%;
+                    }
+                    a {
+                        color: #bae148;
+                    }
+                }
             }
+        }
+    }
+    @media (max-width: 1200px) {
+        h1 {
+            text-align: left;
+            flex: auto;
+        }
+        nav {
+            justify-content: end;
+            flex: auto;
         }
     }
 `;

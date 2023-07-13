@@ -20,14 +20,14 @@ export const accountSlice = createSlice({
         offAccount: (state) => {
             state.isAccount = false;
         },
-        Login: (state) => {
+        login: (state) => {
             state.AccountType = 'login';
         },
-        SignUp: (state) => {
+        signup: (state) => {
             state.AccountType = 'signup';
         },
     },
 });
 
-export const { onAccount, offAccount, Login, SignUp } = accountSlice.actions;
+export const { onAccount, offAccount, login, signup } = accountSlice.actions;
 export default accountSlice.reducer;

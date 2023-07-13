@@ -9,6 +9,7 @@ export const AccountForm = styled.form`
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 10;
     .form {
         position: relative;
         z-index: 1;
@@ -19,7 +20,7 @@ export const AccountForm = styled.form`
         display: flex;
         flex-direction: column;
         gap: 10px;
-        border-top: 7px solid #7d65ff;
+        border-top: 7px solid #bae148;
         border-radius: 7px;
         h2 {
             text-align: center;
@@ -37,7 +38,7 @@ export const AccountForm = styled.form`
             flex-direction: column;
             gap: 5px;
             button {
-                background-color: #7d65ff;
+                background-color: #bae148;
                 color: #fff;
                 font-size: 16px;
                 font-weight: bold;

@@ -1,7 +1,7 @@
 import axios from './axios';
 import { axiosInspection } from './axiosInspection';
 import { handleApiError } from './handleError';
-import { BoardId, Board, GetBoard, UpdataBoard } from 'interfaces/board';
+import { BoardId, Board, GetBoard, UpdataBoard, BoardTypeData } from 'interfaces/board';
 
 // 게시글 작성
 const createBoard = async (data: Board): Promise<void> => {
@@ -14,10 +14,10 @@ const createBoard = async (data: Board): Promise<void> => {
 };
 
 // 게시글 가져오기
-const getBoard = async (success: (data: GetBoard[]) => void): Promise<void> => {
+const getBoard = async (data: BoardTypeData, success: (data: GetBoard) => void): Promise<void> => {
     try {
-        const res = await axios.get('/board');
-        axiosInspection(res.data) && success(res.data);
+        const res = await axios.get(`/board/${data.tableName}?page=${data.boardPage}`);
+        axiosInspection(res.data) && success(res.data.data);
     } catch (error) {
         handleApiError(error);
     }

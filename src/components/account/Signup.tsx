@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { useAppDispatch } from 'redux/hook';
-import { Login, offAccount } from 'redux/slice/accountSlice';
+import { login, offAccount } from 'redux/slice/accountSlice';
 
 import { signup } from 'apis/account';
 
@@ -77,7 +77,7 @@ const Signup = () => {
                     <div>
                         <button
                             onClick={() => {
-                                dispatch(Login());
+                                dispatch(login());
                             }}>
                             뒤로가기
                         </button>

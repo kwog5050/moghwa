@@ -1,3 +1,14 @@
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 * {
     padding: 0px;
     margin: 0px;
@@ -59,6 +70,14 @@ a {
 }
 
 .mobile {
+    display: none !important;
+}
+
+.pcimg {
+    display: inline-block !important;
+}
+
+.moimg {
     display: none !important;
 }
 
@@ -127,6 +146,19 @@ button {
 
 @media only screen and (min-width:100px) and (max-width:1000px) {}
 
-@media only screen and (min-width:100px) and (max-width:800px) {}
+@media only screen and (min-width:100px) and (max-width:800px) {
+
+    .pcimg {
+        display: none !important;
+    }
+
+    .moimg {
+        display: inherit !important;
+    }
+}
 
 @media only screen and (min-width:100px) and (max-width:600px) {}
+
+html {
+    font-family: 'NanumSquare';
+}
