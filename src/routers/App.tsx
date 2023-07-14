@@ -13,6 +13,7 @@ import Signup from 'components/account/Signup';
 import Login from 'components/account/Login';
 import List from 'components/board/List';
 import Detail from 'components/board/Detail';
+import Create from 'components/board/Create';
 
 import 'assets/css/common.css';
 
@@ -32,6 +33,7 @@ function App() {
                 <Route path="/" element={<Main />} />
                 <Route path="/:boardType/:boardPage" element={<List />} />
                 <Route path="/boardDetail/:boardType/:boardPage" element={<Detail />} />
+                <Route path="/:boardType/write" element={<Create />} />
             </Routes>
             <Footer></Footer>
         </>

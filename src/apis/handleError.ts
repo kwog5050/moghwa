@@ -20,6 +20,7 @@ const handleApiError = (error: any): void => {
     }
     console.log(error.config);
     // window.location.replace('/error');
+    alert('에러뜸~~~~~~~');
 };
 
 // 통신 성공했는데 에러 터짐

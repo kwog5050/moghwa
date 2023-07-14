@@ -34,7 +34,7 @@ const Header = () => {
                                 <Link to={'/notice/1'}>공지사항</Link>
                             </li>
                             <li>
-                                <Link to={'/contact/1'}>문의사항</Link>
+                                <Link to={'/qna/1'}>문의사항</Link>
                             </li>
                             {id !== null ? (
                                 <li onClick={logout}>로그아웃</li>

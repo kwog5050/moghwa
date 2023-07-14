@@ -1,25 +1,40 @@
-export interface BoardTypeData {
+export interface BoardTablename {
     tableName: string | undefined;
-    boardPage: number | undefined;
+}
+
+export interface BoardPage {
+    boardPage: number;
 }
 
 export interface BoardId {
-    id: number;
+    bid: number | undefined;
 }
 
-export interface Board {
+export interface CommentId {
+    cid: number | undefined;
+}
+
+export interface BoardTitle {
     title: string;
-    content: string;
-    userId: string;
-    noticeYn: boolean;
-    pageCount: number;
 }
 
-export interface BoardList extends Board, BoardId {
-    viewCnt: number;
-    deleteYn: boolean;
+export interface BoardBaseData {
+    content: string;
+    userId: string | null;
+}
+
+export interface BoardFile {
+    file: string;
+}
+
+export interface BoardDate {
     createdDate: string;
-    modifiedDate: null | string;
+}
+
+export interface BoardBaseType extends BoardTablename, BoardPage {}
+
+export interface BoardList extends BoardBaseData, BoardTitle, BoardId, BoardDate {
+    viewCnt: number;
 }
 
 export interface GetBoard {
@@ -27,10 +42,21 @@ export interface GetBoard {
     boardList: BoardList[];
 }
 
-export interface UpdataBoard extends Board, BoardId {}
+export interface DetailBoard extends BoardList, BoardFile {}
 
-export interface BoardNav {
-    boardPage: number;
+export interface UpdataBoard extends BoardTablename, BoardBaseData, BoardTitle, BoardId, BoardFile {}
+
+export interface CreateBoard extends BoardTablename, BoardBaseData, BoardTitle {
+    file: string;
+}
+
+export interface BoardNav extends BoardPage {
     boardLength: number;
     url: string;
 }
+
+export interface GetComments extends BoardTablename, BoardBaseData, BoardId, BoardDate, CommentId {}
+
+export interface CreateComments extends BoardTablename, BoardBaseData, BoardId {}
+
+export interface DeleteComments extends BoardTablename, CommentId {}

@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
-import { BoardList, GetBoard } from 'interfaces/board';
+import { GetBoard, BoardList } from 'interfaces/board';
 
 import { getBoard } from 'apis/board';
 
 import Paging from './Pageing';
+import Loading from 'components/loding/Loading';
 
 import * as Style from 'assets/styleComponents/board/list';
-import Loading from 'components/loding/Loading';
 
 const Board = () => {
     const nav = useNavigate();
@@ -31,6 +31,11 @@ const Board = () => {
         <Style.Container>
             <div className="wrap">
                 <h2>{boardType === 'notice' ? '공지사항' : '문의사항'}</h2>
+                {sessionStorage.getItem('userId') === 'admin' && (
+                    <Link className="write" to={`/${boardType}/write`}>
+                        글쓰기
+                    </Link>
+                )}
                 <ul className="title">
                     <li>번호</li>
                     <li>제목</li>
@@ -41,9 +46,9 @@ const Board = () => {
                 {board.boardList?.map((a: BoardList, i: number) => {
                     return (
                         <ul className="list" key={i}>
-                            <li>{a.id}</li>
+                            <li>{a.bid}</li>
                             <li>
-                                <Link to={`/boardDetail/${boardType}/1`}>{a.title}</Link>
+                                <Link to={`/boardDetail/${boardType}/${a.bid}`}>{a.title}</Link>
                             </li>
                             <li>{a.userId}</li>
                             <li>{a.createdDate.split(' ')[0]}</li>

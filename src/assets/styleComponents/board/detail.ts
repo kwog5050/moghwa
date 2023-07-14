@@ -9,7 +9,7 @@ export const Container = styled.div`
     }
     .title {
         margin: 30px 0px;
-        border: 1px solid #aaa;
+        border: 1px solid #ccc;
         ul {
             li {
                 display: grid;
@@ -59,19 +59,83 @@ export const Container = styled.div`
             font-size: 18px;
             line-height: 1.2;
         }
+        img {
+            max-width: 100%;
+        }
     }
-    .more,
-    button {
-        margin-top: 20px;
-        border: 1px solid #ccc;
-        font-weight: bold;
-        font-size: 14px;
-        width: 150px;
-        line-height: 40px;
-        text-align: center;
-        border-radius: 5px;
-        margin-bottom: 30px;
-        margin-right: 5px;
-        cursor: pointer;
+    .comments {
+        ul {
+            width: 100%;
+            border-bottom: 1px solid #ccc;
+            li {
+                display: flex;
+                justify-content: space-between;
+                align-items: end;
+                width: 100%;
+                padding: 0px 5px 10px;
+                margin-top: 10px;
+                &:not(:last-child) {
+                    border-bottom: 1px solid #f5f5f5;
+                }
+                h4 {
+                    line-height: 1.2;
+                }
+                p {
+                    margin-top: 10px;
+                }
+                button {
+                    margin-top: 20px;
+                    font-weight: bold;
+                    font-size: 12px;
+                    padding: 7px 10px;
+                    text-align: center;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    background-color: red;
+                    color: #fff;
+                }
+            }
+        }
+        div {
+            position: relative;
+            margin-top: 10px;
+            textarea {
+                width: 100%;
+                resize: none;
+                height: 70px;
+                border: 1px solid #ccc;
+                padding: 5px;
+            }
+            i {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 50px;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 20px;
+                cursor: pointer;
+                background-color: #bae148;
+                color: #fff;
+            }
+        }
+    }
+    .buttons {
+        .more,
+        button {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            font-weight: bold;
+            font-size: 14px;
+            width: 150px;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            margin-right: 5px;
+            cursor: pointer;
+        }
     }
 `;

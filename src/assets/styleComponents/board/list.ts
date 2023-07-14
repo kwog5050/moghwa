@@ -18,6 +18,13 @@ export const Container = styled.div`
             text-align: center;
         }
     }
+    .write {
+        background-color: #666;
+        color: #fff;
+        padding: 5px 20px;
+        border-radius: 5px;
+        margin-bottom: 5px;
+    }
     .list {
         display: grid;
         grid-template-columns: 1fr 70% 1fr 1fr 1fr;

@@ -1,7 +1,8 @@
-import { BoardNav } from 'interfaces/board';
 import React, { useMemo } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
+
+import { BoardNav } from 'interfaces/board';
 
 const Paging: React.FC<BoardNav> = ({ boardPage, boardLength, url }) => {
     const [searchParams, setSearchParams] = useSearchParams();
