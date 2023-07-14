@@ -16,6 +16,7 @@ const Signup = () => {
     const [tel, setTel] = useState('');
     const [email, setEamil] = useState('');
 
+    // 회원가입
     const handleSignup = (e: any): void => {
         e.preventDefault();
 

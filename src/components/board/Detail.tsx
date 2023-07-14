@@ -16,10 +16,21 @@ const Detail = () => {
     const [comment, setComment] = useState<GetComments[] | undefined>(undefined);
     const [commentContent, setCommentContent] = useState('');
 
-    const getComment = () => {
+    // 게시글 삭제
+    const handleDeleteBoard = async (): Promise<void> => {
+        const ok = window.confirm('정말로 삭제 하시겠습니까?');
+        if (ok) {
+            await deleteBoard({ tableName: boardType, boardPage: Number(boardPage) });
+            nav(`/${boardType}/1`);
+        }
+    };
+
+    // 댓글가져오기
+    const getComment = (): void => {
         getComments({ tableName: boardType, boardPage: Number(boardPage) }, setComment);
     };
 
+    // 댓글삭제
     const deleteComment = async (cid: number | undefined): Promise<void> => {
         const ok = window.confirm('정말로 삭제 하시겠습니까?');
         if (ok) {
@@ -27,6 +38,8 @@ const Detail = () => {
             getComment();
         }
     };
+
+    // 댓글 작성
     const handleCreateComment = async (): Promise<void> => {
         if (boardContent !== undefined) {
             await createComments({
@@ -121,18 +134,7 @@ const Detail = () => {
                     <Link to={`/${boardType}/1`} className="more">
                         목록
                     </Link>
-                    {sessionStorage.getItem('userId') === 'admin' && (
-                        <button
-                            onClick={() => {
-                                const ok = window.confirm('정말로 삭제 하시겠습니까?');
-                                if (ok) {
-                                    deleteBoard({ tableName: boardType, boardPage: Number(boardPage) });
-                                    nav(`/${boardType}/1`);
-                                }
-                            }}>
-                            삭제
-                        </button>
-                    )}
+                    {sessionStorage.getItem('userId') === 'admin' && <button onClick={handleDeleteBoard}>삭제</button>}
                 </div>
             </div>
         </Style.Container>

@@ -43,19 +43,25 @@ const Board = () => {
                     <li>작성일</li>
                     <li>조회수</li>
                 </ul>
-                {board.boardList?.map((a: BoardList, i: number) => {
-                    return (
-                        <ul className="list" key={i}>
-                            <li>{a.bid}</li>
-                            <li>
-                                <Link to={`/boardDetail/${boardType}/${a.bid}`}>{a.title}</Link>
-                            </li>
-                            <li>{a.userId}</li>
-                            <li>{a.createdDate.split(' ')[0]}</li>
-                            <li>{a.viewCnt}</li>
-                        </ul>
-                    );
-                })}
+                {board.boardList.length <= 0 ? (
+                    <p style={{ textAlign: 'center', lineHeight: '300px', borderBottom: '1px solid #aaa' }}>
+                        현재 게시글이 없습니다.
+                    </p>
+                ) : (
+                    board.boardList?.map((a: BoardList, i: number) => {
+                        return (
+                            <ul className="list" key={i}>
+                                <li>{a.bid}</li>
+                                <li>
+                                    <Link to={`/boardDetail/${boardType}/${a.bid}`}>{a.title}</Link>
+                                </li>
+                                <li>{a.userId}</li>
+                                <li>{a.createdDate.split(' ')[0]}</li>
+                                <li>{a.viewCnt}</li>
+                            </ul>
+                        );
+                    })
+                )}
             </div>
             <Paging boardPage={Number(boardPage)} boardLength={board.pageCount} url={`/${boardType}`} />
         </Style.Container>

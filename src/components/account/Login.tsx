@@ -12,6 +12,7 @@ const Login = () => {
     const [pw, setPw] = useState('');
     const dispatch = useAppDispatch();
 
+    // 로그인
     const handleLogin = (e: any): void => {
         e.preventDefault();
 
