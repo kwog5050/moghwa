@@ -27,7 +27,9 @@ const Header = () => {
                 <div className="flexBox">
                     <div className="pc"></div>
                     <h1>
-                        <img src={logo} alt="" />
+                        <Link to={'/'}>
+                            <img src={logo} alt="" />
+                        </Link>
                     </h1>
                     <nav>
                         <ul>
