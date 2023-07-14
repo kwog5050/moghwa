@@ -10,8 +10,8 @@ import Loading from 'components/loding/Loading';
 import * as Style from 'assets/styleComponents/board/detail';
 
 const Detail = () => {
-    const { boardType, boardPage } = useParams();
     const nav = useNavigate();
+    const { boardType, boardPage } = useParams();
     const [boardContent, setBoardContent] = useState<DetailBoard | undefined>(undefined);
     const [comment, setComment] = useState<GetComments[] | undefined>(undefined);
     const [commentContent, setCommentContent] = useState('');

@@ -281,6 +281,17 @@ export const Delivery = styled.div`
             grid-template-columns: 1fr;
         }
     }
+    @media (max-width: 500px) {
+        ul {
+            li {
+                p {
+                    br {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
 `;
 
 export const Review = styled.div`
