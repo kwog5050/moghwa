@@ -28,33 +28,32 @@ const Board = () => {
     return board === undefined ? (
         <Loading />
     ) : (
-        <Loading />
-        // <Style.Container>
-        //     <div className="wrap">
-        //         <h2>{boardType === 'notice' ? '공지사항' : '문의사항'}</h2>
-        //         <ul className="title">
-        //             <li>번호</li>
-        //             <li>제목</li>
-        //             <li>글쓴이</li>
-        //             <li>작성일</li>
-        //             <li>조회수</li>
-        //         </ul>
-        //         {board.boardList?.map((a: BoardList, i: number) => {
-        //             return (
-        //                 <ul className="list" key={i}>
-        //                     <li>{a.id}</li>
-        //                     <li>
-        //                         <Link to={`/boardDetail/${boardType}/1`}>{a.title}</Link>
-        //                     </li>
-        //                     <li>{a.userId}</li>
-        //                     <li>{a.createdDate.split(' ')[0]}</li>
-        //                     <li>{a.viewCnt}</li>
-        //                 </ul>
-        //             );
-        //         })}
-        //     </div>
-        //     <Paging boardPage={Number(boardPage)} boardLength={board.pageCount} url={`/${boardType}`} />
-        // </Style.Container>
+        <Style.Container>
+            <div className="wrap">
+                <h2>{boardType === 'notice' ? '공지사항' : '문의사항'}</h2>
+                <ul className="title">
+                    <li>번호</li>
+                    <li>제목</li>
+                    <li>글쓴이</li>
+                    <li>작성일</li>
+                    <li>조회수</li>
+                </ul>
+                {board.boardList?.map((a: BoardList, i: number) => {
+                    return (
+                        <ul className="list" key={i}>
+                            <li>{a.id}</li>
+                            <li>
+                                <Link to={`/boardDetail/${boardType}/1`}>{a.title}</Link>
+                            </li>
+                            <li>{a.userId}</li>
+                            <li>{a.createdDate.split(' ')[0]}</li>
+                            <li>{a.viewCnt}</li>
+                        </ul>
+                    );
+                })}
+            </div>
+            <Paging boardPage={Number(boardPage)} boardLength={board.pageCount} url={`/${boardType}`} />
+        </Style.Container>
     );
 };
 

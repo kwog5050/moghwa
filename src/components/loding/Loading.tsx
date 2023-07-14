@@ -67,7 +67,7 @@ const Div = styled.div`
         font-size: 100px;
         animation-name: loading;
         animation-direction: normal;
-        animation-duration: 0.01s;
+        animation-duration: 1s;
         animation-iteration-count: infinite;
         animation-fill-mode: forwards;
         animation-timing-function: linear;
