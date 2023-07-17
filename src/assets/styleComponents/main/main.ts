@@ -7,6 +7,9 @@ export const Banner = styled.div`
     > img {
         width: 100%;
     }
+    .moContent{
+        display: none;
+    }
     .content {
         position: absolute;
         top: 65%;
@@ -37,17 +40,18 @@ export const Banner = styled.div`
             font-size: 10px;
             margin-bottom: 10px;
         }
-        i {
-            width: 50px;
-            height: 50px;
-            border: 1px dashed #fff;
-            border-radius: 50%;
-            font-size: 24px;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
+        .dotCircle{
+            animation: rotate 8s linear infinite;
+        }
+        .arrow{
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 62%;
+            left: 50%;
+        }
+        @keyframes rotate{
+            0%{transform:rotate(0deg);}
+            100%{transform:rotate(360deg);}
         }
     }
 
@@ -82,6 +86,29 @@ export const Banner = styled.div`
     @media (max-width: 500px) {
         .content {
             display: none;
+        }
+        .moContent{
+        display: block;
+        background-color: rgba(0,0,0,0.4);
+        border-radius: 2px;
+        position: absolute;
+        top: 5%;
+        left: 70%;
+        color: #fff;
+        opacity: 1;
+        transition: opacity 1s;
+        padding: 5px;
+        writing-mode: vertical-lr;
+        p{
+            font-size: 16px;
+            font-weight: 400;
+            padding: 5px;
+        }
+        b {
+            color: #fff;
+            font-size: 16px;
+            font-weight: 900;
+        }
         }
     }
 `;
@@ -140,6 +167,11 @@ export const Intro = styled.div`
                     display: none;
                 }
             }
+        }
+    }
+    @media (max-width:400px){
+        p{
+            letter-spacing: -1px !important;
         }
     }
 `;
@@ -228,6 +260,7 @@ export const Delivery = styled.div`
         justify-content: center;
         grid-gap: 30px;
         li {
+            overflow: hidden;
             img {
                 position: relative;
                 top: -100px;
@@ -288,6 +321,18 @@ export const Delivery = styled.div`
                     br {
                         display: none;
                     }
+                }
+            }
+        }
+    }
+    @media (max-width: 400px) {
+        li {
+            
+            p {
+                letter-spacing: -1px !important;
+
+                b {
+                    letter-spacing: -1px !important;
                 }
             }
         }

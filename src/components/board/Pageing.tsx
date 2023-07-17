@@ -96,8 +96,9 @@ export const PagingContainer = styled.div`
     }
 
     ul li a {
-        background-color: #aaa;
-        color: #fff;
+        /* background-color: #aaa;
+        color: #fff; */
+        color : #888;
         border-radius: 5px;
         width: 40px;
         height: 40px;
@@ -107,7 +108,7 @@ export const PagingContainer = styled.div`
     }
 
     ul li a.now {
-        background-color: #1a6dff;
+        background-color: #bae148;
     }
 `;
 

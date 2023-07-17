@@ -40,6 +40,9 @@ export const Container = styled.div`
                 text-align: center;
             }
         }
+        .linkDetail{
+            cursor: pointer;
+        }
     }
     @media (max-width: 1200px) {
         .title,
