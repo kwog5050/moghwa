@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 import { useAppDispatch } from 'redux/hook';
@@ -10,6 +10,7 @@ import logo from 'assets/images/logo.png';
 
 const Header = () => {
     const dispatch = useAppDispatch();
+    const nav = useNavigate();
     const [id, setId] = useState(sessionStorage.getItem('userId'));
 
     const logout = () => {
@@ -18,7 +19,7 @@ const Header = () => {
         setId(null);
     };
 
-    useEffect(() => {}, [id]);
+    useEffect(() => {}, [nav, id]);
 
     return (
         <Head>
@@ -26,7 +27,9 @@ const Header = () => {
                 <div className="flexBox">
                     <div className="pc"></div>
                     <h1>
-                        <img src={logo} alt="" />
+                        <Link to={'/'}>
+                            <img src={logo} alt="" />
+                        </Link>
                     </h1>
                     <nav>
                         <ul>

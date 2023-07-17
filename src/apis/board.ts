@@ -52,7 +52,7 @@ const deleteBoard = async (data: BoardBaseType): Promise<void> => {
     }
 };
 
-// 게시글 디테일가져오기
+// 게시글 디테일 가져오기
 const getDetailBoard = async (data: BoardBaseType, success: (data: DetailBoard) => void): Promise<boolean | void> => {
     try {
         const res = await axios.get(`/board/${data.tableName}/${data.boardPage}`);

@@ -41,4 +41,32 @@ export const Container = styled.div`
             }
         }
     }
+    @media (max-width: 1200px) {
+        .title,
+        .list {
+            grid-template-columns: 50px 1fr 100px 100px;
+        }
+        .title,
+        .list {
+            li {
+                &:nth-child(4) {
+                    display: none;
+                }
+            }
+        }
+    }
+    @media (max-width: 700px) {
+        .title,
+        .list {
+            grid-template-columns: 50px 1fr 100px;
+        }
+        .title,
+        .list {
+            li {
+                &:nth-child(5) {
+                    display: none;
+                }
+            }
+        }
+    }
 `;

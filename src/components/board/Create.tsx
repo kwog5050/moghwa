@@ -12,6 +12,7 @@ const Create = () => {
     const [content, setContent] = useState('');
     const [firstImage, setFirstImage] = useState('');
 
+    // 이미지 base64
     const onFileChange = (e: any) => {
         const {
             target: { files },
@@ -27,6 +28,18 @@ const Create = () => {
         reader.readAsDataURL(theFile);
     };
 
+    // 게시글 작성
+    const handleCreateBoard = async (e: any) => {
+        e.preventDefault();
+        (await createBoard({
+            userId: sessionStorage.getItem('userId'),
+            title: title,
+            content: content,
+            file: firstImage,
+            tableName: boardType,
+        })) && nav(`/${boardType}/1`);
+    };
+
     const onChange = (e: any) => {
         const value = e.target.value;
         const name = e.target.name;
@@ -40,17 +53,6 @@ const Create = () => {
             default:
                 break;
         }
-    };
-
-    const handleCreateBoard = async (e: any) => {
-        e.preventDefault();
-        (await createBoard({
-            userId: sessionStorage.getItem('userId'),
-            title: title,
-            content: content,
-            file: firstImage,
-            tableName: boardType,
-        })) && nav(`/${boardType}/1`);
     };
 
     return (

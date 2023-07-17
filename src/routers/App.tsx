@@ -14,9 +14,10 @@ import Login from 'components/account/Login';
 import List from 'components/board/List';
 import Detail from 'components/board/Detail';
 import Create from 'components/board/Create';
+import Error from 'components/error/Error';
+import NotFoundPage from 'components/error/NotFoundPage';
 
 import 'assets/css/common.css';
-
 function App() {
     const nav = useNavigate();
     const selectAccount = useAppSelector((state) => state.account);
@@ -34,6 +35,8 @@ function App() {
                 <Route path="/:boardType/:boardPage" element={<List />} />
                 <Route path="/boardDetail/:boardType/:boardPage" element={<Detail />} />
                 <Route path="/:boardType/write" element={<Create />} />
+                <Route path="/error" element={<Error />} />
+                <Route path="/*" element={<NotFoundPage />} />
             </Routes>
             <Footer></Footer>
         </>
