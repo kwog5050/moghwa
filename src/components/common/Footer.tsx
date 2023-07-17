@@ -62,6 +62,33 @@ const Foot = styled.footer`
         font-size: 16px;
         margin-top: 50px;
     }
+    @media (max-width:500px) {
+        padding: 25px 0px;
+        div {
+        display: inline-flex;
+        gap: 15px;
+        span {
+            line-height: 1.5;
+            font-size: 12px;
+            b {
+                line-height: 1.5;
+                font-size: 12px;
+            }
+        }
+    }
+    p {
+        line-height: 1.5;
+        font-size: 12px;
+        b {
+            line-height: 1.5;
+            font-size: 12px;
+        }
+    }
+    h2 {
+        font-size: 12px;
+        margin-top: 25px;
+    }
+    }
 `;
 
 export default Footer;

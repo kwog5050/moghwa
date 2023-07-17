@@ -15,6 +15,18 @@ const Board = () => {
     const { boardType, boardPage } = useParams();
     const [board, setBoard] = useState<GetBoard | undefined>(undefined);
 
+    const writerCheck = (userId:string | null, bid:number | undefined) :void=>{
+        if(boardType !== 'notice'){
+            let sessionId = sessionStorage.getItem('userId');
+            (sessionId == userId || sessionId == "admin")
+                ? nav(`/boardDetail/${boardType}/${bid}`)
+                : alert("해당 글은 작성자와 관리자만 확인할 수 있습니다.")
+        } else {
+            nav(`/boardDetail/${boardType}/${bid}`);
+        }
+
+    }
+
     useEffect(() => {
         getBoard(
             {
@@ -31,7 +43,12 @@ const Board = () => {
         <Style.Container>
             <div className="wrap">
                 <h2>{boardType === 'notice' ? '공지사항' : '문의사항'}</h2>
-                {sessionStorage.getItem('userId') === 'admin' && (
+                {boardType === 'notice' && sessionStorage.getItem('userId') === 'admin' && (
+                    <Link className="write" to={`/${boardType}/write`}>
+                        글쓰기
+                    </Link>
+                )}
+                {boardType !== 'notice' && sessionStorage.getItem('userId') !== null && (
                     <Link className="write" to={`/${boardType}/write`}>
                         글쓰기
                     </Link>
@@ -52,8 +69,10 @@ const Board = () => {
                         return (
                             <ul className="list" key={i}>
                                 <li>{a.bid}</li>
-                                <li>
-                                    <Link to={`/boardDetail/${boardType}/${a.bid}`}>{a.title}</Link>
+                                <li className='linkDetail' onClick={() => {
+                                    writerCheck(a.userId,a.bid);
+                                }}>
+                                    {a.title}
                                 </li>
                                 <li>{a.userId}</li>
                                 <li>{a.createdDate.split(' ')[0]}</li>

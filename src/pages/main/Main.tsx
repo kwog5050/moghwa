@@ -4,6 +4,8 @@ import * as Style from 'assets/styleComponents/main/main';
 
 import banner from 'assets/images/banner.png';
 import mobanner from 'assets/images/mo.png';
+import circle from 'assets/images/dotCircle.png';
+import arrow from 'assets/images/arrow.png';
 import prodcut01 from 'assets/images/제품1.png';
 import prodcut02 from 'assets/images/제품2.png';
 import prodcut03 from 'assets/images/제품3.png';
@@ -13,7 +15,7 @@ import review01 from 'assets/images/리뷰1.png';
 import review02 from 'assets/images/리뷰2.png';
 import review03 from 'assets/images/리뷰3.png';
 import review04 from 'assets/images/리뷰4.png';
-import cut from 'assets/images/짜름.png';
+import cut from 'assets/images/짜름4.png';
 
 const Main = () => {
     const [bannerSwitch, setBannerSwitch] = useState(false);
@@ -57,9 +59,19 @@ const Main = () => {
                     <b>신선한</b> 재료를 사용하였고 <br />
                     아삭함과 깔끔한 맛을 내기 위해 노력했습니다.
                 </div>
+                <div className='moContent'>
+                    <p><b>음식</b>은 눈으로도 먹습니다</p>
+                    <p><b>신선한</b> 재료를 사용하였고 </p>
+                    <p>아삭함과 깔끔한 맛을 내기 위해 노력했습니다</p>
+                </div>
                 <div className="scrollDown" onClick={handleScrollDown}>
                     <p>SCROLL DOWN</p>
-                    <i className="fa-solid fa-angle-down"></i>
+                    <div>
+                        <img src={circle} alt="" className='dotCircle' />
+                        <img src={arrow} alt="" className='arrow' />
+
+                    </div>
+                    {/* <i className="fa-solid fa-angle-down"></i> */}
                 </div>
             </Style.Banner>
 
@@ -91,7 +103,7 @@ const Main = () => {
                         <li>
                             <div>
                                 <img src={prodcut01} alt="" />
-                                <a href="">
+                                <a href="https://smartstore.naver.com/mokhwafood/products/2340376438">
                                     바로가기<i className="fa-solid fa-up-right-from-square"></i>
                                 </a>
                             </div>
@@ -100,7 +112,7 @@ const Main = () => {
                         <li>
                             <div>
                                 <img src={prodcut02} alt="" />
-                                <a href="">
+                                <a href="https://smartstore.naver.com/mokhwafood/products/2340374984">
                                     바로가기<i className="fa-solid fa-up-right-from-square"></i>
                                 </a>
                             </div>
@@ -109,7 +121,7 @@ const Main = () => {
                         <li>
                             <div>
                                 <img src={prodcut03} alt="" />
-                                <a href="">
+                                <a href="https://smartstore.naver.com/mokhwafood/products/2373787319">
                                     바로가기<i className="fa-solid fa-up-right-from-square"></i>
                                 </a>
                             </div>
@@ -118,7 +130,7 @@ const Main = () => {
                         <li>
                             <div>
                                 <img src={prodcut04} alt="" />
-                                <a href="">
+                                <a href="https://smartstore.naver.com/mokhwafood/products/2373802749">
                                     바로가기<i className="fa-solid fa-up-right-from-square"></i>
                                 </a>
                             </div>
