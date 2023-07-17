@@ -31,7 +31,7 @@ const Detail = () => {
     };
 
     // 댓글삭제
-    const deleteComment = async (cid: number | undefined): Promise<void> => {
+    const handleDeleteComment = async (cid: number | undefined): Promise<void> => {
         const ok = window.confirm('정말로 삭제 하시겠습니까?');
         if (ok) {
             await deleteComments({ tableName: boardType, cid: cid });
@@ -107,7 +107,7 @@ const Detail = () => {
                                           {sessionStorage.getItem('userId') === a.userId && (
                                               <button
                                                   onClick={() => {
-                                                      deleteComment(a.cid);
+                                                      handleDeleteComment(a.cid);
                                                   }}>
                                                   글삭제
                                               </button>
